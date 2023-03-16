@@ -52,17 +52,36 @@ export const NovedadesForm = ()=>{
         return (form.hora.length>0 && form.fecha.length>0 && form.puesto.length>0 ) ? true :false;
     }
 
+
+    const options = [
+        {value: '', text: '--Elegir Opcion--'},
+        {value: 'uno', text: 'opcion uno'},
+        {value: 'dos', text: 'opcion dos'},
+        {value: 'tres', text: 'opcion tres'},
+      ];
+    
+      const [selected, setSelected] = useState(options[0].value);
+    
+      const handleChange = event => {
+        console.log(event.target.value);
+        setSelected(event.target.value);
+      };
+
+
     return (
         <>
+
+
            <form>
                 <div className="form-row">
                     <div className="form-group col-md-12">
                         <label htmlFor="tipo">Tipo Novedad</label>
-                        <select id="tipo" name="tipo" className="form-control">
-                            <option selected disabled>Seleccionar</option>
-                            <option>Accidente Vehicular</option>
-                            <option>Asalto</option>
-                            <option>Robo</option>
+                        <select value={selected} onChange={handleChange} id="tipo" name="tipo" className="form-control">
+                            {options.map(option => (
+                                <option key={option.value} value={option.value}>
+                                    {option.text}
+                                </option>
+                            ))}
                         </select>
                     </div>
                 </div>

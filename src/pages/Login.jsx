@@ -6,8 +6,8 @@ export const Login = () => {
     const {login} =useContext(AuthContext);
 
     const [form, setForm]=useState({
-        email:'advinjosuev899@gmail.com',
-        password:'123456'
+        email:'',
+        password:''
     });
 
     const onChange= ({target})=>{

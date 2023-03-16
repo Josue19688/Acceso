@@ -10,6 +10,7 @@ import { Visitas } from "../pages/Visitas";
 import { Archivo } from "../pages/Archivo";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../context/Auth/AuthContext";
+import { ChatPage } from "../pages/Chat";
 
 
 export const AppRoutes = () => {
@@ -32,9 +33,10 @@ export const AppRoutes = () => {
                   <Route  path="novedades"  element={<Novedades/>}/>
                   <Route  path="visitas"  element={<Visitas/>}/>
                   <Route  path="archivo"  element={<Archivo/>}/>
+                  <Route  path="chat"  element={<ChatPage/>}/>
               </Route>
             :
-            <Route path="/login" element={<AuthLayout/>}>
+            <Route path="/" element={<AuthLayout/>}>
               <Route  index element={<Login/>}/>
             </Route>
           }

@@ -54,9 +54,15 @@ export const Sidebar = () => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="Archivo" className="nav-link">
+                        <Link to="archivo" className="nav-link">
                             <span className="icon"><i className='bx bx-box'></i></span>
                             <span className="menu-title">Archivo</span>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="chat" className="nav-link">
+                            <span className="icon"><i className=' bx bx-chat'></i></span>
+                            <span className="menu-title">Chat</span>
                         </Link>
                     </li>
                 </ul>

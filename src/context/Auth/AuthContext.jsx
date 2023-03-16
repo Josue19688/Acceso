@@ -70,6 +70,13 @@ export const AuthProvider =({children})=>{
     },[]);
 
     const logout = ()=>{
+        localStorage.removeItem('token');
+        setAuth({
+            uid:null,
+            logged:false,
+            nombre:null,
+            email:null
+        })
 
     }
 

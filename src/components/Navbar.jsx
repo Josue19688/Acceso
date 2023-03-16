@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Link} from 'react-router-dom';
+import { AuthContext } from '../context/Auth/AuthContext';
 
 
 export const Navbar = () => {
+
+    const {auth, logout} = useContext(AuthContext);
+
   return (
     <>
         <nav className="navbar top-navbar navbar-expand">
@@ -64,12 +68,6 @@ export const Navbar = () => {
                             </Link>
                         </li>
 
-                      
-
-                       
-
-                      
-
                         <li className="nav-item dropdown profile-nav-item">
                             <Link to="#" className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div className="menu-profile">
@@ -85,8 +83,8 @@ export const Navbar = () => {
                                     </div>
 
                                     <div className="info text-center">
-                                        <span className="name">Andro Smith</span>
-                                        <p className="mb-3 email">hello@androsmith.com</p>
+                                        <span className="name">{auth.nombre}</span>
+                                        <p className="mb-3 email">{auth.email}</p>
                                     </div>
                                 </div>
 
@@ -98,7 +96,7 @@ export const Navbar = () => {
                                             </Link>
                                         </li>
 
-                                        <li className="nav-item">
+                                        {/* <li className="nav-item">
                                             <Link to="#" className="nav-link">
                                                 <i className='bx bx-envelope'></i> <span>My Inbox</span>
                                             </Link>
@@ -114,16 +112,16 @@ export const Navbar = () => {
                                             <Link to="#" className="nav-link">
                                                 <i className='bx bx-cog'></i> <span>Settings</span>
                                             </Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
 
                                 <div className="dropdown-footer">
                                     <ul className="profile-nav">
                                         <li className="nav-item">
-                                            <Link to="#" className="nav-link">
+                                            <div className="nav-link" style={{cursor:'pointer'}} onClick={logout}>
                                                 <i className='bx bx-log-out'></i> <span>Logout</span>
-                                            </Link>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
