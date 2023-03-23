@@ -1,18 +1,49 @@
 
 
-import React, { useContext } from "react";
-import { MensajeLeft, MensajeRigth } from "../components/Mensaje";
+import React, { useContext, useState } from "react";
+import { ChatComponent } from "../components/Chat";
+
+import { NoChat } from "../components/NoChat";
 import { UserChatItem } from "../components/UserChatItem";
 import { AuthContext } from "../context/Auth/AuthContext";
+import { ChatContext } from "../context/chat/ChatContext";
+import { SocketContext } from "../context/sockets/SocketContext";
 
 export const ChatPage=()=>{
 
     const {auth} = useContext(AuthContext);
+    
 
     const traslado ={
         transform:'translate3d(0px, 0px, 0px)',
         display: 'none'
     }
+
+    const {chatState }=  useContext(ChatContext);
+
+
+    const [mensaje, setMensaje]=useState('');
+    const {socket} = useContext(SocketContext);
+    
+    const onchange = ({target})=>{
+        setMensaje(target.value);
+    }
+
+    const enviarMensaje=(ev)=>{
+        ev.preventDefault();
+
+        if(mensaje.length ===0){return;}
+
+        //enviado el mensaje via socket e insertarndo en la db
+        socket.emit('mensaje-personal',{
+            de: auth.uid,
+            para: chatState.chatActivo,
+            mensaje
+        })
+
+    }
+
+
     return (
         <>
         <div className="chat-content-area mt-20">
@@ -103,9 +134,11 @@ export const ChatPage=()=>{
                                         <div className="simplebar-content-wrapper" style={{height:' 100%', overflow: 'hidden scroll'}}>
                                             <div className="simplebar-content" style={{padding: '25px 20px'}}>
                                     <div className="chat-content">
-                                        <MensajeRigth/>
-                                       <MensajeLeft/>
-
+                                       {
+                                        (!chatState.chatActivo)
+                                            ? <NoChat/>
+                                            : <ChatComponent/>
+                                       }
                                        
 
                                     </div>
@@ -116,16 +149,28 @@ export const ChatPage=()=>{
                                         <div className="simplebar-scrollbar" style={{height: '523px', 'transform': 'translate3d(0px, 100px, 0px)', display:' block'}}></div></div></div>
 
                                 <div className="chat-list-footer">
-                                    <form className="d-flex align-items-center">
+                                    <form className="d-flex align-items-center"
+                                    onSubmit={enviarMensaje}
+                                    >
                                         <div className="btn-box d-flex align-items-center mr-3">
-                                            <button className="emoji-btn d-inline-block mr-2" data-toggle="tooltip" data-placement="top" title="" type="button" data-original-title="Emoji"><i className="bx bx-smile"></i></button>
+                                            {/* <button className="emoji-btn d-inline-block mr-2" data-toggle="tooltip" data-placement="top" title="" type="button" data-original-title="Emoji"><i className="bx bx-smile"></i></button>
 
-                                            <button className="file-attachment-btn d-inline-block" data-toggle="tooltip" data-placement="top" title="" type="button" data-original-title="File Attachment"><i className="bx bx-paperclip"></i></button>
+                                            <button className="file-attachment-btn d-inline-block" data-toggle="tooltip" data-placement="top" title="" type="button" data-original-title="File Attachment"><i className="bx bx-paperclip"></i></button> */}
                                         </div>
-
-                                        <input type="text" className="form-control" placeholder="Type your message..."/>
-
-                                        <button type="submit" className="send-btn d-inline-block">Send <i className="bx bx-paper-plane"></i></button>
+                                       
+                                        <input 
+                                            type="text" 
+                                            className="form-control" 
+                                            placeholder="Type your message..."
+                                            value={mensaje}
+                                            onChange={onchange}
+                                        />
+                                        {
+                                        (!chatState.chatActivo)
+                                            ? ""
+                                            :  <button type="submit" className="send-btn d-inline-block">Send <i className="bx bx-paper-plane"></i></button>
+                                       }
+                                       
                                     </form>
                                 </div>
                             </div>

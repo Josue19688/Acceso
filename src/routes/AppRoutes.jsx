@@ -21,7 +21,7 @@ export const AppRoutes = () => {
     verificaToken();
   },[verificaToken]);
 
-  console.log(auth);
+  
   return (
     <BrowserRouter>
         <Routes>

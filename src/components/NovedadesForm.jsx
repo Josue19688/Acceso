@@ -70,8 +70,6 @@ export const NovedadesForm = ()=>{
 
     return (
         <>
-
-
            <form>
                 <div className="form-row">
                     <div className="form-group col-md-12">

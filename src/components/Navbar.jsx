@@ -71,7 +71,7 @@ export const Navbar = () => {
                         <li className="nav-item dropdown profile-nav-item">
                             <Link to="#" className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div className="menu-profile">
-                                    <span className="name">Hi! Andro</span>
+                                    <span className="name">{auth.nombre}</span>
                                     <img src="assets\img\user1.jpg" className="rounded-circle" alt="image"/>
                                 </div>
                             </Link>

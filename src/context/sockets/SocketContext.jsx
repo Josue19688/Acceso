@@ -37,6 +37,17 @@ export const SocketProvider = ({ children }) => {
         });
        
     },[socket, dispatch]);
+
+    useEffect(()=>{
+
+        socket?.on('mensaje-personal',(mensaje)=>{
+            dispatch({
+                type:types.nuevoMensaje,
+                payload:mensaje
+            });
+        });
+
+    },[socket,dispatch]);
     
     
     return (
