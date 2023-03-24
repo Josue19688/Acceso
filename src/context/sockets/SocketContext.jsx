@@ -4,6 +4,7 @@ import { useSocket } from '../../hooks/useSocket'
 import { types } from '../../types/types';
 import { AuthContext } from '../Auth/AuthContext';
 import { ChatContext } from '../chat/ChatContext';
+import { VisitaContext } from '../Visita/visitaContext';
 
 export const SocketContext = createContext();
 
@@ -13,6 +14,7 @@ export const SocketProvider = ({ children }) => {
     const { socket, online, conectarSocket, desconectarSocket } = useSocket('http://localhost:9090');
     const {auth} =useContext(AuthContext);
     const {dispatch} = useContext(ChatContext);
+    const {visitaDispatch} =  useContext(VisitaContext);
 
     useEffect(()=>{
         if(auth.logged){
@@ -48,6 +50,25 @@ export const SocketProvider = ({ children }) => {
         });
 
     },[socket,dispatch]);
+
+    useEffect(()=>{
+        socket?.on('mensaje-visitas',(visita)=>{
+            visitaDispatch({
+                type:types.nuevaVisita,
+                payload:visita
+            })
+        })
+    },[socket,visitaDispatch]);
+
+    useEffect(()=>{
+        socket?.on('lista-visitas',(visitas)=>{
+           
+            visitaDispatch({
+                type:types.cargarVisitas,
+                payload:visitas
+            })
+        })
+    },[socket,visitaDispatch]);
     
     
     return (

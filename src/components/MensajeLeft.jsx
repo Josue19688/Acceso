@@ -1,7 +1,7 @@
 import { horaMes } from "../helpers/horaMes"
 
 export const MensajeLeft=({msg})=>{
-    console.log(msg)
+   
     return(
         <>
          <div className="chat chat-left">

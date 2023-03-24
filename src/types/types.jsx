@@ -5,4 +5,6 @@ export const types={
     activarChat:'[Chat] Activar Chat',
     nuevoMensaje: '[Chat] Nuevo Mensaje',
     cargarMensajes:'[Chat] Cargar Mensajes',
+    nuevaVisita:'[Visita] Nueva Visita',
+    cargarVisitas:'[Visita] Cargar Visita',
 }

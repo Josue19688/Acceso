@@ -16,7 +16,7 @@ export const UsuarioChatItem=({usuario})=>{
 
         //cargar todos los mensajes
         const resp = await fetchToken(`mensajes/${usuario.uid}`);
-        console.log(resp.mensajes);
+        
         dispatch({
             type:types.cargarMensajes,
             payload:resp.mensajes
