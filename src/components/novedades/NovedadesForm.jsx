@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
-import { NovedadContext } from "../../context/novedades/novedadContext";
+import { NovedadContext } from "../../context/Novedades/novedadContext";
 
 
 import fetchToken from "../../helpers/FetchToken";

@@ -2,7 +2,7 @@
 
 
 import React, { useContext } from 'react'
-import { NovedadContext } from '../../context/novedades/novedadContext'
+import { NovedadContext } from '../../context/Novedades/novedadContext'
 import { NovedadItem } from './NovedadItem';
 
 export const NovedadesList = () => {

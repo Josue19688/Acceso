@@ -4,7 +4,7 @@ import { useSocket } from '../../hooks/useSocket'
 import { types } from '../../types/types';
 import { AuthContext } from '../Auth/AuthContext';
 import { ChatContext } from '../chat/ChatContext';
-import { NovedadContext } from '../novedades/novedadContext';
+import { NovedadContext } from '../Novedades/novedadContext';
 import { VisitaContext } from '../Visita/visitaContext';
 
 export const SocketContext = createContext();
@@ -16,7 +16,8 @@ export const SocketProvider = ({ children }) => {
     const {auth} =useContext(AuthContext);
     const {dispatch} = useContext(ChatContext);
     const {visitaDispatch} =  useContext(VisitaContext);
-    const {novedadDispatch}=useContext(NovedadContext);
+    //const {novedadDispatch}=useContext(NovedadContext);
+    const {novedadDispatch} = useContext(NovedadContext)
 
     useEffect(()=>{
         if(auth.logged){
