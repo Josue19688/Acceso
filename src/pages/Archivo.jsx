@@ -1,7 +1,7 @@
 import React from 'react'
 import DataTable from 'react-data-table-component';
 
-import {NovedadesForm}  from '../components/NovedadesForm'; 
+// import {NovedadesForm}  from '../components/NovedadesForm'; 
 
 
 export const Archivo = () => {
@@ -147,7 +147,7 @@ export const Archivo = () => {
         <div className="sidebar" >
             <div className="sidebar-content d-flex email-sidebar" style={{width:'90%'}} data-simplebar="">
                 <div className="todo-menu">
-                    <NovedadesForm/>
+                    {/* <NovedadesForm/> */}
                 </div>
             </div>
         </div>

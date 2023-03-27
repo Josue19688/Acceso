@@ -7,4 +7,6 @@ export const types={
     cargarMensajes:'[Chat] Cargar Mensajes',
     nuevaVisita:'[Visita] Nueva Visita',
     cargarVisitas:'[Visita] Cargar Visita',
+    nuevaNovedad:'[Novedad] Nueva Novedad',
+    cargarNovedad:'[Novedad] Cargar Novedad'
 }

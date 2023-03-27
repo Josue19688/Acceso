@@ -1,5 +1,5 @@
 import React from 'react'
-import { NovedadesForm } from './NovedadesForm'
+// import { NovedadesForm } from './NovedadesForm'
 import { TaskItem } from './TodoItem'
 
 
@@ -16,7 +16,7 @@ export const Task = () => {
                 <div className="sidebar" >
                     <div className="sidebar-content d-flex email-sidebar" style={{width:'90%'}} data-simplebar="">
                         <div className="todo-menu">
-                            <NovedadesForm/>
+                            {/* <NovedadesForm/> */}
                         </div>
                     </div>
                 </div>

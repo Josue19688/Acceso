@@ -11,7 +11,7 @@ export const visitaReducer =(state, action)=>{
             }
             
         case types.cargarVisitas:
-            //console.log(action.payload);
+           
             return {
                 ...state,
                 visitas:[...action.payload]

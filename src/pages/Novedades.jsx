@@ -1,6 +1,7 @@
 import React from 'react'
-import { NovedadesForm } from '../components/NovedadesForm';
-import { TaskItem } from '../components/TodoItem';
+import { NovedadesList } from '../components/novedades/Novedades';
+import { NovedadesForm } from '../components/novedades/NovedadesForm';
+
 
 export const Novedades = () => {
 
@@ -40,24 +41,11 @@ export const Novedades = () => {
                         </div>
 
                         <div className="header-right w-100">
-                            LISTADO DE INGRESOS
+                            LISTADO DE NOVEDADES
                         </div>
                     </div>
 
-                    <ul className="list-wrapper" data-simplebar="">
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                        <TaskItem/>
-                    </ul>
+                   <NovedadesList/>
                 </div>
             </div>
         </div>

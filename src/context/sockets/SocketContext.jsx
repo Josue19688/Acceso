@@ -4,6 +4,7 @@ import { useSocket } from '../../hooks/useSocket'
 import { types } from '../../types/types';
 import { AuthContext } from '../Auth/AuthContext';
 import { ChatContext } from '../chat/ChatContext';
+import { NovedadContext } from '../novedades/novedadContext';
 import { VisitaContext } from '../Visita/visitaContext';
 
 export const SocketContext = createContext();
@@ -15,6 +16,7 @@ export const SocketProvider = ({ children }) => {
     const {auth} =useContext(AuthContext);
     const {dispatch} = useContext(ChatContext);
     const {visitaDispatch} =  useContext(VisitaContext);
+    const {novedadDispatch}=useContext(NovedadContext);
 
     useEffect(()=>{
         if(auth.logged){
@@ -69,6 +71,16 @@ export const SocketProvider = ({ children }) => {
             })
         })
     },[socket,visitaDispatch]);
+
+    useEffect(()=>{
+        socket?.on('lista-novedad',(novedades)=>{
+           
+            novedadDispatch({
+                type:types.cargarNovedad,
+                payload:novedades
+            })
+        })
+    },[socket,novedadDispatch]);
     
     
     return (
